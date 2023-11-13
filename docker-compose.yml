@@ -1,0 +1,24 @@
+services:
+  readarr:
+    image: lscr.io/linuxserver/readarr:develop
+    container_name: readarr
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+    volumes:
+      - ./readarr/data:/config
+      - ./readarr/books:/books
+      - ./scraper/certs/bookinfo-club.crt:/etc/ssl/certs/bookinfo-club.crt # Trust cistp,
+    ports:
+      - 4000:8787
+    restart: unless-stopped
+  readarr-metadata-scraper:
+    build: scraper
+    container_name: readarr-metadata-scraper
+    depends_on:
+      - readarr
+    networks:
+      default:
+        aliases:
+          - api.bookinfo.club
