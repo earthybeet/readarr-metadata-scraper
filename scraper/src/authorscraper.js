@@ -114,23 +114,6 @@ const getAuthor = async (authorId,authorUrl) => {
                 Url :  authorUrl,
                 Works :  null
             }
-            //
-            // return {
-            //     status: "Received",
-            //     source: "https://github.com/nesaku/biblioreads",
-            //     scrapeURL: scrapeURL,
-            //     image: image,
-            //     name: name,
-            //     website: website,
-            //     genre: genre,
-            //     influences: influences,
-            //     birthDate: birthDate,
-            //     deathDate: deathDate,
-            //     desc: desc,
-            //     books: books,
-            //     series: series,
-            //     lastScraped: lastScraped,
-            // };
 };
 
 export default getAuthor;

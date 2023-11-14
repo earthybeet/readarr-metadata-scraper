@@ -3,7 +3,6 @@ import * as cheerio from 'cheerio';
 //Modified from https://github.com/nesaku/BiblioReads/blob/main/pages/api/book-scraper.js
 export const getBook = async (id)=>{
     const scrapeURL = `https://www.goodreads.com/book/show/${id}`
-    // const scrapeURL = req.body.queryURL.split("?")[0];
         const response = await fetch(`${scrapeURL}`, {
             method: "GET",
             headers: new Headers({
@@ -167,9 +166,6 @@ export const getBook = async (id)=>{
             "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(3)"
         ).attr("href");
         const lastScraped = new Date().toISOString();
-        // {
-        //     title === "" ? (res.statusCode = 504) : (res.statusCode = 200);
-        // }
 
     const realBook= {
         Asin :  "",// unknown
@@ -193,33 +189,6 @@ export const getBook = async (id)=>{
         Url :  workURL,
     }
     return {work:realBook, author: author}
-        // return {
-        //     status: "Received",
-        //     // statusCode: res.statusCode,
-        //     source: "https://github.com/nesaku/biblioreads",
-        //     scrapeURL: scrapeURL,
-        //     cover: cover,
-        //     series: series,
-        //     seriesURL: seriesURL,
-        //     workURL: workURL,
-        //     title: title,
-        //     author: author,
-        //     rating: rating,
-        //     ratingCount: ratingCount,
-        //     reviewsCount: reviewsCount,
-        //     desc: desc,
-        //     genres: genres,
-        //     bookEdition: bookEdition,
-        //     publishDate: publishDate,
-        //     related: related,
-        //     reviewBreakdown: reviewBreakdown,
-        //     reviews: reviews,
-        //     quotes: quotes,
-        //     quotesURL: quotesURL,
-        //     questions: questions,
-        //     questionsURL: questionsURL,
-        //     lastScraped: lastScraped,
-        // };
 }
 
 
